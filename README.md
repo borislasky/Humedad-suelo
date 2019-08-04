@@ -10,7 +10,7 @@ Medida de la humedad del suelo y envío a domoticz
 Mide la humedad del suelo mediante una sonda y envía los datos recogidos a domoticz en mini.  
 La medición de humedad es la media de las N medidas consecutivas. Se observa que las medidas individuales son muy variables. De hecho, variaciones muy grandes. Se toman 20 muestras y se calcula la media. Este valor es el que se envía.
 
-Para la calibración de la sonda se siguen los siguientes pasos:
+Para la calibración de la sonda se siguen los siguientes pasos:  
 1.- Tomar n muestras con la sonda al aire. Esto marcará el valor de 0% humedad.  
 2.- Tomar n muestras con la sonda sumergida en agua. Esto marcará el valor 100%.  
 
