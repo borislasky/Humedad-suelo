@@ -13,21 +13,23 @@ const char* urlNodeRedPre  = "http://192.168.43.212:1880/datosHumedad/?idsonda=0
 const char* urlDomoticzPre = "http://192.168.43.212:8084/json.htm?type=command&param=udevice&idx=";
 const char* urlDomoticzSuf = "&svalue=0&nvalue=";
 
-// YD-38 sensor de humedad
-byte humidity_sensor_pin = A0;
+// YL-38 sensor de humedad
+byte SensorAnalogica = A0;
+byte AlimentacionSensor    = 5; //D1
 
 const int NumMuestras = 25;
-const unsigned long t = 15 * 60 * 1000 * 1000; //  Cada cuanto tomo muestra. en micro segundos 
+const unsigned long t = 5 * 60 * 1000 * 1000; //  Cada cuanto tomo muestra. en micro segundos 
 
 // Valores leido cuando la sonda está seca y mojada
-const int seco   = 550; // => 0%
-const int mojado =  300; // => 100%
+const int seco   = 1024; // => 0%
+const int mojado =  240; // => 100%
 const float factor = 100.0 / float(seco - mojado);
 
 char urlDomoticz[100];
 
 
 void ini_WIFI() {
+  
   int cont = 0;
   delay(100);
   Serial.print("Conectando a ");
@@ -64,7 +66,7 @@ void llamaAPI(char* url){
 
 
 int read_humidity_sensor() {
-  int value = analogRead(humidity_sensor_pin);
+  int value = analogRead(SensorAnalogica);
   Serial.print(value);
   Serial.print(" - ");
   return round(float(seco - value) * factor);
@@ -72,6 +74,10 @@ int read_humidity_sensor() {
 
 
 void setup() {
+  // Doy alimentación al transductor
+  pinMode(AlimentacionSensor, OUTPUT);
+  digitalWrite(AlimentacionSensor, HIGH);
+
   Serial.begin(115200);
   Serial.println();
   Serial.println("Buenos días !");
@@ -87,12 +93,16 @@ void setup() {
     Serial.println(humedad);
     Acum += humedad;
     n++;
-    delay(50);
+    delay(100);
   }
   int humMedia = Acum / NumMuestras;
+  if(humMedia > 100) humMedia = 100;
+  if(humMedia < 0) humMedia = 0;
   
   // Llamada a domoticz
-  Serial.println(humMedia);
+  Serial.print("Humedad: ");
+  Serial.print(humMedia);
+  Serial.println("%");
   sprintf(urlDomoticz, "%s%d%s%d", urlDomoticzPre, 22, urlDomoticzSuf, humMedia);
   llamaAPI(urlDomoticz);
 
