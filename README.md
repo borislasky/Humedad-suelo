@@ -19,3 +19,6 @@ Para ahorrar energía, el ESP entra en deep sleep una vez obtenida la muestra y 
 El transductor sólo se alimenta eléctricamente si el ESP está activo. La alimentación se hace mediante un relé reed (SIP 1A05) de bajo consumo.
 
 De momento en prototipo
+
+## Calibración
+Se puede utilzar el scketch calib
