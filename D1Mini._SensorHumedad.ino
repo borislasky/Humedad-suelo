@@ -1,12 +1,11 @@
 #include <ESP8266WiFi.h>
 #include <ESP8266HTTPClient.h>
+#include "auth.h"
 
                       
 // Datos de conexión a WiFi
 WiFiClient   InternetClient;
 int status = WL_IDLE_STATUS;     // the starting Wifi radio's status
-const char*  WIFI_SSID      = "AndroidAP";
-const char*  WIFI_PASSWORD  = "boris123";
 
 // Datos conexión http
 HTTPClient http;
