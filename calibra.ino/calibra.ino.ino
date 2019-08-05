@@ -2,7 +2,7 @@
  * Toma muestras del sensor de humedad
  * Està conectado a la entrada A0
  */
-
+ 
 // YD-38 sensor de humedad
 byte humidity_sensor_pin = A0;
 
