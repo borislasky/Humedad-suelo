@@ -7,7 +7,7 @@
 byte humidity_sensor_pin = A0;
 
 #define NUM_MUESTRAS 100
-unsigned long i = 0, valor, acum = 0;
+unsigned long i = 0, valor, acum = 0, maxi = 0, mini = 10000;
 
 void setup() {
   Serial.begin(115200);
@@ -15,13 +15,14 @@ void setup() {
 
 void loop() {
   if(i == NUM_MUESTRAS){
-    Serial.printf("Valor medio: %3ld\n", acum/i);
-    acum = 0;
-    i = 0;
+    Serial.printf("Valor medio: %3d. Máx: %ld. Mín: %ld %\n", acum/i, maxi, mini);
+    acum = 0; maxi = 0; mini = 10000; i = 0;
   }
   valor = analogRead(humidity_sensor_pin);
   acum += valor;
+  if(valor > maxi) maxi = valor;
+  if(valor < mini) mini = valor;
   i++;
-  Serial.printf("Muestra %03ld: %3ld - %3ld\n" , i, valor, acum/i);
-  delay(1000);
+  //Serial.printf("Muestra %03ld: %3ld - %3ld\n" , i, valor, acum/i);
+  delay(500);
 }
