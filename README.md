@@ -37,5 +37,5 @@ Para mojado, introducir la sonda en agua. El valor observado es de **Vmojado = 2
 ### Valor en %
 Supongo que el valor devuelto es lineal respecto al valor devuelto por la sonda.
 
-factor = 100.0 / float(Vseco - Vmojado);
+factor = 100.0 / float(Vseco - Vmojado);  
 valorPerc = round(float(Vseco - valor) * factor);
