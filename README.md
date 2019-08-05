@@ -18,7 +18,7 @@ De momento en prototipo
 ## Calibración
 Se puede utilzar el sketch calibra/calibra.ino para obtner los valores de seco y mojado. Éste toma series de 1000 muestras y pinta los resultados.
 
-### HD-38
+### YD-38
 No sé la razón pero, si actúo sobre el potenciometro de la placa afecta le valor analógico de salida.  
 Para obtener los valores, situo el potenciómetro en un punto medio (más o menos).
 Si lo sitúo a tope de sentido horario, la medida es siempre **1024**, en seco o mojado.  
