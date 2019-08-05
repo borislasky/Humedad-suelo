@@ -21,4 +21,18 @@ El transductor sólo se alimenta eléctricamente si el ESP está activo. La alim
 De momento en prototipo
 
 ## Calibración
-Se puede utilzar el scketch calib
+Se puede utilzar el sketch calibra/calibra.ino para obtner los valores de seco y mojado. Éste toma series de 1000 muestras y pinta los resultados.
+
+### Seco
+Para seco, dejar la sonda al aire.  
+Los valores observados son:
+- Media : 548
+- Máximo: 552
+- Mínimo: 545
+
+### Mojado.
+Para mojado, introducir la sonda en agua.
+Los valores observados son:
+- Media : 548
+- Máximo: 552
+- Mínimo: 545
