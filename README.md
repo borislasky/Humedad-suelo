@@ -36,7 +36,7 @@ Este parece que funciona bien. La salida digital se activa dependiendo de la pos
 Para seco, dejar la sonda al aire. El valor observado es de **Vseco = 1024**
 
 ### Mojado.
-Para mojado, introducir la sonda en agua. El valor observado es de **Vmojado = 240**
+Para mojado, introducir la sonda en agua. El valor observado es de **Vmojado = 100**
 
 ### Valor en %
 Supongo que el valor devuelto es lineal respecto al valor devuelto por la sonda.
