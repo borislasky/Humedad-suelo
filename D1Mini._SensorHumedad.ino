@@ -22,7 +22,7 @@ const unsigned long t = 5 * 60 * 1000 * 1000; //  Cada cuanto tomo muestra. en m
 
 // Valores leido cuando la sonda está seca y mojada
 const int seco   = 1024; // => 0%
-const int mojado =  240; // => 100%
+const int mojado =  100; // => 100%
 const float factor = 100.0 / float(seco - mojado);
 
 char urlDomoticz[100];
@@ -43,8 +43,8 @@ void ini_WIFI() {
       Serial.println();
       Serial.print("No consigo conectar con ");
       Serial.print(WIFI_SSID);
-      Serial.println(" Reboto");
-      ESP.restart(); // si no consigo conectar reboto
+      Serial.println(" . Me voy a dormir");
+      ESP.deepSleep(t, WAKE_RFCAL); // No consigo conectar. Me vuelvo a dormir
     }
   }
   Serial.println("");
